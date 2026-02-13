@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proativa Dash - Analytics SST</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>PROATIVA</h2>
+                <span>Analytics</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="#" class="nav-link"><i data-lucide="building-2"></i> Empresas</a>
+                <a href="#" class="nav-link"><i data-lucide="file-text"></i> Formulários</a>
+                <a href="#" class="nav-link"><i data-lucide="bar-chart-3"></i> Benchmarks</a>
+                <a href="#" class="nav-link"><i data-lucide="users"></i> Demográfico</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-link"><i data-lucide="settings"></i> Configurações</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Buscar dados ou empresas...">
+                </div>
+                <div class="user-profile">
+                    <div class="notifications"><i data-lucide="bell"></i></div>
+                    <span class="user-name">Eng. Ricardo</span>
+                    <div class="avatar">R</div>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="header-title">
+                    <h1>Visão Geral do Sistema</h1>
+                    <p>Análise consolidada de satisfação e segurança.</p>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Total de Respondentes</span>
+                            <i data-lucide="users" class="icon-blue"></i>
+                        </div>
+                        <div class="kpi-value">1,284</div>
+                        <div class="kpi-trend positive">
+                            <i data-lucide="trending-up"></i> +12% <span>vs mês anterior</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Média de Satisfação</span>
+                            <i data-lucide="smile" class="icon-green"></i>
+                        </div>
+                        <div class="kpi-value">8.4</div>
+                        <div class="kpi-trend positive">
+                            <i data-lucide="trending-up"></i> +0.5 <span>meta: 8.0</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Empresas Ativas</span>
+                            <i data-lucide="briefcase" class="icon-purple"></i>
+                        </div>
+                        <div class="kpi-value">42</div>
+                        <div class="kpi-trend neutral">
+                            <i data-lucide="minus"></i> 0% <span>estável</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <span>Taxa de Engajamento</span>
+                            <i data-lucide="activity" class="icon-orange"></i>
+                        </div>
+                        <div class="kpi-value">76%</div>
+                        <div class="kpi-trend negative">
+                            <i data-lucide="trending-down"></i> -3% <span>alerta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container main-chart">
+                        <div class="chart-header">
+                            <h3>Evolução da Satisfação por Pilar</h3>
+                            <div class="chart-actions">
+                                <button class="btn-tab active">Mensal</button>
+                                <button class="btn-tab">Trimestral</button>
+                            </div>
+                        </div>
+                        <canvas id="mainAnalyticsChart"></canvas>
+                    </div>
+
+                    <div class="chart-container side-chart">
+                        <div class="chart-header">
+                            <h3>Distribuição por Setor</h3>
+                        </div>
+                        <canvas id="sectorDoughnutChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- NOVO BLOCO: Análise detalhada por pergunta -->
+                <div class="chart-container full-width">
+                    <div class="chart-header">
+                        <div class="title-group">
+                            <h3>Análise Detalhada por Pergunta</h3>
+                            <select id="selectPergunta" class="custom-select">
+                                <option value="1">O ambiente de trabalho é seguro?</option>
+                                <option value="2">Qual seu nível de satisfação com os EPIs?</option>
+                            </select>
+                        </div>
+                        
+                        <div class="chart-controls">
+                            <button class="btn-chart-type active" data-type="bar" title="Barras"><i data-lucide="bar-chart-2"></i></button>
+                            <button class="btn-chart-type" data-type="pie" title="Pizza"><i data-lucide="pie-chart"></i></button>
+                            <button class="btn-chart-type" data-type="line" title="Linhas"><i data-lucide="trending-up"></i></button>
+                            <button class="btn-chart-type" data-type="radar" title="Radar"><i data-lucide="aperture"></i></button>
+                        </div>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="perguntaDetalheChart"></canvas>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Inicializa ícones
+        lucide.createIcons();
+    </script>
+</body>
+</html>
